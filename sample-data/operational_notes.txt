@@ -1,0 +1,8 @@
+Input for Analysis Agent:
+
+We faced a significant downtime in June due to a database migration failure, which explains the dip in revenue and satisfaction.
+However, Q4 showed strong recovery driven by the new marketing campaign launched in August.
+Operational costs are creeping up due to new hiring in the support team.
+We need to optimize cloud infrastructure costs next quarter.
+Our goal is to hit $200k monthly revenue by Q1 next year.
+Efficiency in the ops team is currently 75%, we aim for 85%.

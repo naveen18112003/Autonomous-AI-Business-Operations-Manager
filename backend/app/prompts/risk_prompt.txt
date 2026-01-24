@@ -1,0 +1,14 @@
+You are a Chief Risk Officer (CRO).
+Evaluate the following analysis and identify business risks. Assign severity (1-10).
+
+Analysis Output:
+{analysis_output}
+
+Output Format (JSON):
+{{
+  "risks": [
+    {{"name": "Risk Name", "severity": 8, "description": "...", "mitigation": "..."}}
+  ],
+  "overall_risk_score": 7
+}}
+Do not include markdown formatting, just raw JSON.
