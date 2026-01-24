@@ -24,7 +24,9 @@ class LLMService:
             )
             return response.choices[0].message.content
         except Exception as e:
-            logger.error(f"Error calling OpenAI API: {e}")
-            raise Exception("Failed to get response from AI model")
+            error_msg = str(e)
+            logger.error(f"Error calling OpenAI API: {error_msg}")
+            # Raise a more descriptive error so the UI can show what's wrong
+            raise Exception(f"AI Model Response Failed: {error_msg}")
 
 llm_service = LLMService()

@@ -12,4 +12,14 @@ class Settings:
 
     API_V1_STR: str = "/api/v1"
 
+    def __init__(self):
+        # Configuration check for debugging (logs only, doesn't expose keys)
+        if not self.OPENAI_API_KEY:
+             print("WARNING: OPENAI_API_KEY is not set!")
+        else:
+             print(f"DEBUG: OPENAI_API_KEY is configured (type: {type(self.OPENAI_API_KEY)})")
+        
+        print(f"DEBUG: Using Base URL: {self.OPENAI_BASE_URL}")
+        print(f"DEBUG: Using Model Name: {self.OPENAI_MODEL_NAME}")
+
 settings = Settings()
