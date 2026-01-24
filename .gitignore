@@ -4,6 +4,7 @@ __pycache__/
 *$py.class
 venv/
 .env
+verify_token.py
 
 # NodeJS
 node_modules/
