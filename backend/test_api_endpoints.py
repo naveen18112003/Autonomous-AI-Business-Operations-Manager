@@ -2,7 +2,7 @@ import urllib.request
 import urllib.error
 import sys
 
-BASE_URL = "https://autonomous-ai-business-operations-manager-8yihptn8d.vercel.app/api"
+BASE_URL = "https://autonomous-ai-business-operations-manager-16f44vhhc.vercel.app/api"
 
 def test_endpoint(path):
     url = f"{BASE_URL}{path}"

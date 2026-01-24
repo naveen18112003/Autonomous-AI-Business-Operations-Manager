@@ -7,8 +7,25 @@ logger = logging.getLogger(__name__)
 
 class AnalysisAgent:
     def __init__(self):
-        with open("app/prompts/analysis_prompt.txt", "r") as f:
-            self.prompt_template = f.read()
+        import os
+        current_dir = os.path.dirname(__file__)
+        prompt_path = os.path.join(current_dir, "../../app/prompts/analysis_prompt.txt")
+        # Fallback if structure is slightly different or ensure absolute resolution
+        prompt_path = os.path.abspath(prompt_path)
+        
+        try:
+            with open(prompt_path, "r") as f:
+                self.prompt_template = f.read()
+        except FileNotFoundError:
+             # Try alternative path for safety (e.g. if run from different root)
+             base_dir = os.path.dirname(os.path.dirname(os.path.dirname(current_dir))) # root/backend/app/agents -> root
+             # Actually, best is to rely on package structure relative to THIS file.
+             # This file: .../backend/app/agents/analysis_agent.py
+             # Prompt: .../backend/app/prompts/analysis_prompt.txt
+             # Relative: ../prompts/analysis_prompt.txt
+             prompt_path = os.path.join(current_dir, "../prompts/analysis_prompt.txt")
+             with open(prompt_path, "r") as f:
+                self.prompt_template = f.read()
 
     def run(self, request: AnalysisRequest) -> dict:
         try:

@@ -7,7 +7,10 @@ logger = logging.getLogger(__name__)
 
 class ExecutionAgent:
     def __init__(self):
-        with open("app/prompts/execution_prompt.txt", "r") as f:
+        import os
+        current_dir = os.path.dirname(__file__)
+        prompt_path = os.path.join(current_dir, "../prompts/execution_prompt.txt")
+        with open(prompt_path, "r") as f:
             self.prompt_template = f.read()
 
     def run(self, request: ExecutionRequest) -> dict:
