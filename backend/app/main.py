@@ -7,7 +7,8 @@ from app.routes import analysis, risk, decision, execution, report
 app = FastAPI(
     title=settings.PROJECT_NAME,
     version=settings.PROJECT_VERSION,
-    openapi_url=f"{settings.API_V1_STR}/openapi.json"
+    openapi_url=f"{settings.API_V1_STR}/openapi.json",
+    root_path="/api"
 )
 
 setup_cors(app)
