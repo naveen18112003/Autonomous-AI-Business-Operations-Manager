@@ -36,7 +36,23 @@ const Reports = () => {
             link.remove();
         } catch (error) {
             console.error("Report generation failed:", error);
-            alert("Failed to generate report. Please try again or check the server logs.");
+            // Try to extract detailed error from blob response if possible
+            let errorMessage = "Failed to generate report. Please try again or check the server logs.";
+            if (error.response?.data instanceof Blob) {
+                const reader = new FileReader();
+                reader.onload = () => {
+                    try {
+                        const errorJson = JSON.parse(reader.result);
+                        alert(`Error: ${errorJson.detail || errorMessage}`);
+                    } catch (e) {
+                        alert(errorMessage);
+                    }
+                };
+                reader.readAsText(error.response.data);
+            } else {
+                errorMessage = error.response?.data?.detail || error.message || errorMessage;
+                alert(`Error: ${errorMessage}`);
+            }
         } finally {
             setLoading(false);
         }
