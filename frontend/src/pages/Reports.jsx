@@ -36,6 +36,7 @@ const Reports = () => {
             link.remove();
         } catch (error) {
             console.error("Report generation failed:", error);
+            alert("Failed to generate report. Please try again or check the server logs.");
         } finally {
             setLoading(false);
         }
